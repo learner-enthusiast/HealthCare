@@ -3,6 +3,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from core.views import PatientViewSet, DoctorViewSet, MappingViewSet, RegisterView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 # Swagger imports
 from rest_framework import permissions
@@ -20,10 +21,10 @@ schema_view = get_schema_view(
         title="Healthcare API",
         default_version="v1",
         description="API documentation for Healthcare backend",
-        contact=openapi.Contact(email="you@example.com"),
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
+    authentication_classes=(JWTAuthentication,),
 )
 
 urlpatterns = [

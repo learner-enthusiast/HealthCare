@@ -1,6 +1,7 @@
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.decorators import action
 from .models import Patient, Doctor, PatientDoctorMapping
 from .serializers import (
     RegisterSerializer,
@@ -63,3 +64,21 @@ class MappingViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save(assigned_by=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    @action(detail=True, methods=["get"], url_path="")
+    def doctors_for_patient(self, request, pk=None):
+        """
+        Returns all doctors assigned to a specific patient (by patient_id).
+        Endpoint: GET /api/mappings/<patient_id>/
+        """
+        try:
+            patient = Patient.objects.get(id=pk)
+        except Patient.DoesNotExist:
+            return Response(
+                {"detail": "Patient not found"}, status=status.HTTP_404_NOT_FOUND
+            )
+
+        mappings = PatientDoctorMapping.objects.filter(patient=patient)
+        doctors = [mapping.doctor for mapping in mappings]
+        serializer = DoctorSerializer(doctors, many=True)
+        return Response(serializer.data)
