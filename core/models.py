@@ -1,5 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
+
+
+GENDER_CHOICES = [
+    ("male", "Male"),
+    ("female", "Female"),
+    ("other", "Other"),
+]
 
 
 class Doctor(models.Model):
@@ -15,8 +23,10 @@ class Doctor(models.Model):
 class Patient(models.Model):
     owner = models.ForeignKey(User, related_name="patients", on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    age = models.PositiveIntegerField(null=True, blank=True)
-    gender = models.CharField(max_length=20, blank=True)
+    age = models.PositiveIntegerField(
+        null=True, blank=True, validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
+    gender = models.CharField(max_length=20, choices=GENDER_CHOICES, blank=True)
     address = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 

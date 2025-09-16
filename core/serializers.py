@@ -37,7 +37,16 @@ class PatientSerializer(serializers.ModelSerializer):
 
 
 class MappingSerializer(serializers.ModelSerializer):
+    doctor_name = serializers.SerializerMethodField()
+    patient_name = serializers.SerializerMethodField()
+
     class Meta:
         model = PatientDoctorMapping
         fields = "__all__"
         read_only_fields = ("assigned_by", "assigned_at")
+
+    def get_doctor_name(self, obj):
+        return obj.doctor.name
+
+    def get_patient_name(self, obj):
+        return obj.patient.name

@@ -1,0 +1,102 @@
+[
+  {
+    "model": "core.patientdoctormapping",
+    "pk": 10,
+    "fields": {
+      "patient": 10,
+      "doctor": 10,
+      "assigned_by": 10,
+      "assigned_at": "2024-09-11T09:00:00Z"
+    }
+  },
+  {
+    "model": "core.patientdoctormapping",
+    "pk": 11,
+    "fields": {
+      "patient": 10,
+      "doctor": 11,
+      "assigned_by": 11,
+      "assigned_at": "2024-09-11T09:05:00Z"
+    }
+  },
+  {
+    "model": "core.patientdoctormapping",
+    "pk": 12,
+    "fields": {
+      "patient": 11,
+      "doctor": 12,
+      "assigned_by": 12,
+      "assigned_at": "2024-09-11T09:10:00Z"
+    }
+  },
+  {
+    "model": "core.patientdoctormapping",
+    "pk": 13,
+    "fields": {
+      "patient": 11,
+      "doctor": 13,
+      "assigned_by": 10,
+      "assigned_at": "2024-09-11T09:15:00Z"
+    }
+  },
+  {
+    "model": "core.patientdoctormapping",
+    "pk": 14,
+    "fields": {
+      "patient": 12,
+      "doctor": 14,
+      "assigned_by": 11,
+      "assigned_at": "2024-09-11T09:20:00Z"
+    }
+  },
+  {
+    "model": "core.patientdoctormapping",
+    "pk": 15,
+    "fields": {
+      "patient": 12,
+      "doctor": 15,
+      "assigned_by": 12,
+      "assigned_at": "2024-09-11T09:25:00Z"
+    }
+  },
+  {
+    "model": "core.patientdoctormapping",
+    "pk": 16,
+    "fields": {
+      "patient": 13,
+      "doctor": 16,
+      "assigned_by": 10,
+      "assigned_at": "2024-09-11T09:30:00Z"
+    }
+  },
+  {
+    "model": "core.patientdoctormapping",
+    "pk": 17,
+    "fields": {
+      "patient": 13,
+      "doctor": 17,
+      "assigned_by": 11,
+      "assigned_at": "2024-09-11T09:35:00Z"
+    }
+  },
+  {
+    "model": "core.patientdoctormapping",
+    "pk": 18,
+    "fields": {
+      "patient": 14,
+      "doctor": 18,
+      "assigned_by": 12,
+      "assigned_at": "2024-09-11T09:40:00Z"
+    }
+  },
+  {
+    "model": "core.patientdoctormapping",
+    "pk": 19,
+    "fields": {
+      "patient": 14,
+      "doctor": 19,
+      "assigned_by": 10,
+      "assigned_at": "2024-09-11T09:45:00Z"
+    }
+  }
+]

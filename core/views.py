@@ -9,11 +9,13 @@ from .serializers import (
     DoctorSerializer,
     MappingSerializer,
 )
+from drf_yasg.utils import swagger_auto_schema
 
 
 class RegisterView(APIView):
     permission_classes = [permissions.AllowAny]
 
+    @swagger_auto_schema(request_body=RegisterSerializer)
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -28,7 +30,7 @@ class PatientViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return Patient.objects.filter(owner=self.request.user)
+        return Patient.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
