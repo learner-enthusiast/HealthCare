@@ -63,7 +63,11 @@ SWAGGER_SETTINGS = {
             "type": "apiKey",
             "name": "Authorization",
             "in": "header",
-            "description": "JWT Authorization header using the Bearer scheme. Example: 'Bearer <token>'",
+            "description": (
+                "To authorize, copy your access token from the login response, "
+                "then click 'Authorize' in Swagger and paste it in the format: "
+                "'Bearer <access_token>' (include the word 'Bearer', a space, then your token)."
+            ),
         }
     },
     "USE_SESSION_AUTH": False,
